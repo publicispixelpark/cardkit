@@ -52,7 +52,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -78,7 +78,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @param {object} options - The additional options for use
 	   */
 	  function CardKit(configuration) {
-	    var options = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
+	    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
 	    _classCallCheck(this, CardKit);
 
@@ -228,7 +228,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'computeConfiguration',
 	    value: function computeConfiguration() {
-	      var options = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
+	      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
 	      // Get the base configuration
 	      var configuration = Object.assign({}, this.configuration);
@@ -266,8 +266,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'updateConfiguration',
 	    value: function updateConfiguration(configuration) {
-	      var options = arguments.length <= 1 || arguments[1] === undefined ? { layouts: null, templates: null, themes: null } : arguments[1];
-	      var rerender = arguments.length <= 2 || arguments[2] === undefined ? true : arguments[2];
+	      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : { layouts: null, templates: null, themes: null };
+	      var rerender = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
 
 	      this.configuration = configuration;
 
@@ -328,13 +328,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  window.CardKit = CardKit;
 	}
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
 
-/***/ }
+/***/ })
 /******/ ])
 });
 ;

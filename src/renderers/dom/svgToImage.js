@@ -55,7 +55,7 @@ class SVGToImage {
    */
   download (name, options = {}) {
     // Setup default options
-    options.format = options.format || 'image/jpeg';
+    options.format = options.format || 'image/png';
 
     // Convert it to a data URI
     this._toDataURI(options, (uri) => {
@@ -79,7 +79,7 @@ class SVGToImage {
         // Create a link to dynamically click and trigger the download
         const a = document.createElement('a');
         a.download = name;
-        a.href = canvas.toDataURL(options.format || 'image/jpeg');
+        a.href = canvas.toDataURL(options.format || 'image/png');
         document.body.appendChild(a);
 
         // I'm aware that `a.click()` below may not work reliably on all browsers. This is something to explore at a later date.

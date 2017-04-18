@@ -129,7 +129,7 @@ class CardKitDOM extends CardKitRenderer {
     const svgToImage = new SVGToImage(element);
 
     // Setup default filename
-    let filename = 'cardkit-default.jpg';
+    let filename = 'cardkit-default.png';
 
     // Get the configuration
     const configuration = this.computeConfiguration();
@@ -149,12 +149,12 @@ class CardKitDOM extends CardKitRenderer {
 
     // Update the filename
     if (filenameLayer) {
-      filename = slugify(filenameLayer.text) + '.jpg';
+      filename = slugify(filenameLayer.text) + '.png';
     }
 
     // Trigger the download
     svgToImage.download(filename, {
-      format: 'image/jpeg',
+      format: 'image/png',
       scale: scale
     });
   }
