@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("react-dom"), require("rvg.js"), require("deep-extend"), require("react-color"));
+		module.exports = factory(require("react"), require("react-dom"), require("rvg.js"), require("deep-extend"), require("react-color"), require("file-saver"));
 	else if(typeof define === 'function' && define.amd)
-		define("CardKitDOM", ["react", "react-dom", "rvg.js", "deep-extend", "react-color"], factory);
+		define("CardKitDOM", ["react", "react-dom", "rvg.js", "deep-extend", "react-color", "file-saver"], factory);
 	else if(typeof exports === 'object')
-		exports["CardKitDOM"] = factory(require("react"), require("react-dom"), require("rvg.js"), require("deep-extend"), require("react-color"));
+		exports["CardKitDOM"] = factory(require("react"), require("react-dom"), require("rvg.js"), require("deep-extend"), require("react-color"), require("file-saver"));
 	else
-		root["CardKitDOM"] = factory(root["react"], root["react-dom"], root["rvg.js"], root["deep-extend"], root["react-color"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_30__) {
+		root["CardKitDOM"] = factory(root["react"], root["react-dom"], root["rvg.js"], root["deep-extend"], root["react-color"], root["file-saver"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_30__, __WEBPACK_EXTERNAL_MODULE_50__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -3472,7 +3472,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var helpers = __webpack_require__(28);
-
+	var fileSaver = __webpack_require__(50);
 	/**
 	 * @name SVGToImage
 	 * @class Used for downloading an SVG DOM element in your browser
@@ -3557,16 +3557,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	          var context = canvas.getContext('2d');
 	          context.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
 
+	          canvas.toBlob(function (blob) {
+	            fileSaver.saveAs(blob, name);
+	          });
+
+	          /*
 	          // Create a link to dynamically click and trigger the download
-	          var a = document.createElement('a');
+	          const a = document.createElement('a');
 	          a.download = name;
 	          a.href = canvas.toDataURL(options.format || 'image/png');
 	          document.body.appendChild(a);
-
-	          // I'm aware that `a.click()` below may not work reliably on all browsers. This is something to explore at a later date.
-
-	          // Click and download
-	          a.click();
+	            // I'm aware that `a.click()` below may not work reliably on all browsers. This is something to explore at a later date.
+	            // Click and download
+	          a.click();*/
 	        };
 	      });
 	    }
@@ -3735,6 +3738,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	}();
 
 	module.exports = SVGToImage;
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_50__;
 
 /***/ })
 /******/ ])

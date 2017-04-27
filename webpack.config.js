@@ -1,3 +1,5 @@
+'use strict';
+
 // Use minimist to help us with argument parsing
 const args = require('minimist')(process.argv.slice(2));
 

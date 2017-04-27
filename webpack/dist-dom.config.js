@@ -1,3 +1,5 @@
+'use strict';
+
 // Load some dependencies
 const path = require('path');
 const _ = require('lodash');

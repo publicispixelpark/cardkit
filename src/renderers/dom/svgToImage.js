@@ -1,5 +1,5 @@
 const helpers = require('../../helpers');
-
+const fileSaver = require('file-saver');
 /**
  * @name SVGToImage
  * @class Used for downloading an SVG DOM element in your browser
@@ -76,6 +76,11 @@ class SVGToImage {
         const context = canvas.getContext('2d');
         context.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
 
+        canvas.toBlob( function(blob) {
+          fileSaver.saveAs( blob, name );
+        });
+
+        /*
         // Create a link to dynamically click and trigger the download
         const a = document.createElement('a');
         a.download = name;
@@ -85,7 +90,7 @@ class SVGToImage {
         // I'm aware that `a.click()` below may not work reliably on all browsers. This is something to explore at a later date.
 
         // Click and download
-        a.click();
+        a.click();*/
       }
     });
   }
