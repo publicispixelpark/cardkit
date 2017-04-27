@@ -76,21 +76,9 @@ class SVGToImage {
         const context = canvas.getContext('2d');
         context.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
 
-        canvas.toBlob( function(blob) {
-          fileSaver.saveAs( blob, name );
+        canvas.toBlob(function (blob) {
+          fileSaver.saveAs(blob, name);
         });
-
-        /*
-        // Create a link to dynamically click and trigger the download
-        const a = document.createElement('a');
-        a.download = name;
-        a.href = canvas.toDataURL(options.format || 'image/png');
-        document.body.appendChild(a);
-
-        // I'm aware that `a.click()` below may not work reliably on all browsers. This is something to explore at a later date.
-
-        // Click and download
-        a.click();*/
       }
     });
   }
